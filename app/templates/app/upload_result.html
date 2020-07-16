@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Upload Result{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p><span>{{ g.filename }} uploaded</span></p>
+{% endblock %}

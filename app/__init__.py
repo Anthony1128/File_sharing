@@ -11,5 +11,11 @@ def create_app(test_config=None):
     from . import upload
     app.register_blueprint(upload.bp)
 
+    from . import download
+    app.register_blueprint(download.bp)
+
+    from . import delete
+    app.register_blueprint(delete.bp)
+
     return app
 
