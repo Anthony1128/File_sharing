@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, g
+from flask import Blueprint, request, render_template, g, abort
 from werkzeug.utils import secure_filename
 import os
 
@@ -16,5 +16,5 @@ def download():
             g.filename = filename
             return render_template('app/delete_result.html')
     except FileNotFoundError:
-        return 'No such File'
+        return abort(404)
     return render_template('app/delete.html')
