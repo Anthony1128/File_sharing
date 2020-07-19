@@ -1,4 +1,4 @@
-from flask import Blueprint, request, send_file, render_template
+from flask import Blueprint, request, send_from_directory, render_template, abort
 from werkzeug.utils import secure_filename
 import os
 
@@ -11,11 +11,11 @@ def download():
         if request.method == 'POST':
             filename = request.form['filename']
             filename = secure_filename(filename)
-            download_folder = 'uploads/'
-            path = os.path.join(download_folder, filename)
-            return send_file(path, as_attachment=True)
+            download_folder = '../store/'
+            path = os.path.join(download_folder, filename[:2])
+            return send_from_directory(path, filename, as_attachment=True)
     except FileNotFoundError:
-            return 'No such File'
+        return abort(404)
     return render_template('app/download.html')
 
 

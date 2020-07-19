@@ -1,4 +1,4 @@
-from flask import Blueprint, request, send_file, render_template, g
+from flask import Blueprint, request, render_template, g
 from werkzeug.utils import secure_filename
 import os
 
@@ -11,7 +11,7 @@ def download():
         if request.method == 'POST':
             filename = request.form['filename']
             filename = secure_filename(filename)
-            delete_folder = 'app/uploads/'
+            delete_folder = 'store/{}'.format(filename[:2])
             os.remove(os.path.join(delete_folder, filename))
             g.filename = filename
             return render_template('app/delete_result.html')
