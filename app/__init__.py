@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+from . import upload
+from . import download
+from . import delete
 
 
 def create_app(test_config=None):
@@ -8,14 +11,13 @@ def create_app(test_config=None):
     def index():
         return render_template('app/index.html')
 
-    from . import upload
     app.register_blueprint(upload.bp)
 
-    from . import download
     app.register_blueprint(download.bp)
 
-    from . import delete
     app.register_blueprint(delete.bp)
 
     return app
+
+
 
