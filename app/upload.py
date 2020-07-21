@@ -1,4 +1,3 @@
-import os
 from flask import current_app, render_template, request, Blueprint
 from flask import g
 from werkzeug.utils import secure_filename
