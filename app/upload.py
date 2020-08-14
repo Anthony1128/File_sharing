@@ -11,9 +11,10 @@ bp = Blueprint('upload', __name__)
 def upload():
     if request.method == 'POST':
         file = request.files['file']
+        print(file)
         if file:
-            filename = secure_filename(file.filename)
-            hash_name = hashlib.md5(filename.encode())
+            contents = file.read()
+            hash_name = hashlib.md5(contents)
             filename = str(hash_name.hexdigest())
             if not os.path.isdir('store/{}'.format(filename[:2])):
                 os.mkdir('store/{}'.format(filename[:2]))

@@ -1,7 +1,7 @@
 from flask import Flask, render_template
-from . import upload
-from . import download
-from . import delete
+from app import upload
+from app import download
+from app import delete
 
 
 def create_app(test_config=None):
