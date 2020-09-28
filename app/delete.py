@@ -5,6 +5,7 @@ import os
 bp = Blueprint('delete', __name__)
 
 
+# deletes file by its name (name is hash from content of the file)
 @bp.route('/delete/', methods=['POST', 'GET'])
 def download():
     try:

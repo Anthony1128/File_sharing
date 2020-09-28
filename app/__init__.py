@@ -4,6 +4,7 @@ from app import download
 from app import delete
 
 
+# creating a flask app with blueprints
 def create_app(test_config=None):
     app = Flask(__name__)
 

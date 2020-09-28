@@ -5,6 +5,7 @@ import os
 bp = Blueprint('download', __name__)
 
 
+# downloads file by its name (name is hash from content of the file)
 @bp.route('/download/', methods=['POST', 'GET'])
 def download():
     try:
