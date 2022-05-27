@@ -1,27 +1,27 @@
-# Хранилище файлов с доступом по http
+# File storage with access by http protocol
 
-## Запуск
+## App run
 
-Для запуска приложения потребуется сделать следующее:
-- в папке приложения выполнить следующие команды:
+To start the app do the following:
+- from the root folder of the app run next commands:
  1. `export FLASK_APP=app`
  2. `flask run`
-- перейти по ссылке из консоли
+- follow the provided link from command line
 
-Для запуска приложения с использованием gunicorn достаточно также в папке приложения выполнить команду и также перейти по ссылке:
+To run the app with gunicorn run next command:
 - `gunicorn 'app:create_app()'`
 
-## Функционал
+## Implementation
 
-Реализованы три функции приложения:
+The App has three main functionalities:
 1. Upload
-  Пользователь загружает файл любого формата в форму и получает ответ в виде хэшированного имени файла. Сам файл загружается на сервер store/ab/abcdef12345..., где "abcdef12345..." - имя файла, совпадающее с его хэшем. /ab/  - подкаталог, состоящий из первых двух символов хэша файла.
+  User uploads a file of any format into the form and gets the hash of a file as a response. The file itself is uploaded to the server store/ab/abcdef12345..., where "abcdef12345..." - name of a file (its hash). /ab/  - subfolder which is the first two letters from hash.
 2. Download
-  Пользователь вводит хэшированное имя файла в форму. В случае, если приложение находит файл с таким именем, файл отдается пользователю на загрузку. В противном случае, приложение возвращает ошибку 404.
+  User enters file name (its hash) into the form. In case the system finds the file with such name user gets this file downloaded. Otherwise, the app returns 404.
 3. Delete
-  Пользователь вводит хэшированное имя файла в форму. В случае, если приложение находит файл с таким именем, файл удаляется с сервера. В противном случае, приложение возвращает ошибку 404.
+  User enters file name (its hash) into the form. In case the system finds the file with such name files is deleted from server. Otherwise, the app returns 404.
 
-## Инструменты
+## Tools
 
-Для реализации приложения был использован фреймворк [flask](https://flask.palletsprojects.com/en/1.1.x/)
-С помощью библиотеки hashlib файл хэшируется алгоритмом md5.
+[flask](https://flask.palletsprojects.com/en/1.1.x/) is used for implementation.
+hashlib lib is used for getting hash by md5 algorithm.
